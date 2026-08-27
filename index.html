@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ASCA | International Swimming Coach Certification - UAE 2026</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R2L46YBCX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R2L46YBCX4');
+</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -656,6 +664,18 @@ function setLang(lang){
   });
 }
 
+// GA4 click tracking for key conversion links (payments, WhatsApp, registration forms)
+document.querySelectorAll('a[target="_blank"]').forEach(link => {
+  link.addEventListener('click', function(){
+    if(typeof gtag === 'function'){
+      gtag('event', 'cta_click', {
+        link_url: this.href,
+        link_text: this.textContent.trim().slice(0, 60)
+      });
+    }
+  });
+});
+
 const regForm = document.getElementById('ascaRegForm');
 const regStatus = document.getElementById('regStatus');
 const regMsgs = {
@@ -676,6 +696,7 @@ regForm.addEventListener('submit', function(e){
   .then(r => { if(!r.ok) throw new Error('bad response'); return r.json(); })
   .then(() => {
     regStatus.textContent = regMsgs[currentLang].success;
+    if(typeof gtag === 'function'){ gtag('event', 'generate_lead', { form: 'registration' }); }
     regStatus.className = 'text-center text-sm text-green-600 font-semibold';
     regForm.reset();
     btn.disabled = false;
