@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASCA | International Swimming Coach Certification - UAE 2026</title>
+<title>ASCA | Global Online Swimming Coach Certification - November 2026</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2L46YBCX4"></script>
 <script>
@@ -14,21 +14,23 @@
 </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#071A2F;
-    --navy:#0B2447;
-    --deep:#0F3B5F;
-    --ocean:#2E86AB;
-    --aqua:#5FD0D9;
-    --gold:#F5A623;
-    --gold-light:#FFC857;
-    --foam:#F7FAFC;
-    --sky:#EAF4FA;
+    --ink:#040E1C;
+    --navy:#0A2240;
+    --deep:#0E3A5C;
+    --ocean:#1C7FA6;
+    --aqua:#00C2D9;
+    --lane:#FF4E33;
+    --gold:#FFC224;
+    --gold-light:#FFD866;
+    --foam:#F3F8FB;
+    --sky:#E7F3FA;
   }
   *{font-family:'Tajawal','Cairo', sans-serif;}
-  h1,h2,h3,h4,.display{font-family:'Cairo','Tajawal', sans-serif;}
+  h1,h2,h3,h4,.display{font-family:'Archivo Black','Cairo','Tajawal', sans-serif; letter-spacing:-0.01em;}
+  html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4,html[lang="ar"] .display{font-family:'Cairo','Tajawal', sans-serif; letter-spacing:0;}
   body{background:var(--foam); color:var(--navy);}
   .bg-ink{background-color:var(--ink);}
   .bg-navy{background-color:var(--navy);}
@@ -42,6 +44,23 @@
   .text-aqua{color:var(--aqua);}
   .text-gold{color:var(--gold);}
   .border-gold{border-color:var(--gold);}
+
+  /* Sports-scoreboard structural language: sharp corners, bold top bars, lane-stripe dividers */
+  .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-\[2rem\]{border-radius:10px !important;}
+  .card-lift{position:relative; border-top:4px solid var(--navy);}
+  .card-lift.accent-gold{border-top-color:var(--gold);}
+  .card-lift.accent-lane{border-top-color:var(--lane);}
+  .stat-strip{background:var(--ink); position:relative; overflow:hidden;}
+  .stat-strip::before{
+    content:""; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 2px, transparent 2px 64px);
+  }
+  .stat-num{font-family:'Archivo Black','Cairo',sans-serif; font-size:clamp(2.2rem,5vw,3.2rem); line-height:1; color:var(--aqua);}
+  html[lang="ar"] .stat-num{font-family:'Cairo',sans-serif;}
+  .stat-label{font-size:12px; letter-spacing:.14em; color:rgba(255,255,255,.55); font-weight:700;}
+  .tag-chip{display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:#fff; font-size:12px; font-weight:800; letter-spacing:.06em; padding:5px 12px; border-radius:4px;}
+  .tag-chip.lane{background:var(--lane);}
+  .tag-chip.gold{background:var(--gold); color:var(--ink);}
 
   .wave-wrap{line-height:0; margin-top:-1px;}
   .wave-wrap svg{display:block; width:100%; height:auto;}
@@ -96,7 +115,21 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .float-swim, .swim-arm, .swim-ripple, .bubble, .wave-anim-track, .pulse-cta{animation:none;}
+    .float-swim, .swim-arm, .swim-ripple, .bubble, .wave-anim-track, .pulse-cta, .hero-slide{animation:none;}
+    .hero-slide{opacity:0;}
+    .hero-slide:first-child{opacity:1;}
+  }
+
+  .hero-slide{opacity:0; animation:heroSlideShow 12s infinite;}
+  .hero-slide:nth-child(1){animation-delay:0s;}
+  .hero-slide:nth-child(2){animation-delay:4s;}
+  .hero-slide:nth-child(3){animation-delay:8s;}
+  @keyframes heroSlideShow{
+    0%{opacity:0;}
+    4%{opacity:1;}
+    29%{opacity:1;}
+    35%{opacity:0;}
+    100%{opacity:0;}
   }
 
   .ripple-bg{position:absolute; border-radius:9999px; border:1.5px solid rgba(255,255,255,.25);}
@@ -113,6 +146,18 @@
   .lang-switch button.active{background:var(--gold); color:var(--navy);}
 
   .logo-chip{background:#fff; border-radius:12px; padding:8px 12px; display:flex; align-items:center; justify-content:center;}
+
+  /* Modal overlay (region selection + bank details) */
+  .modal-overlay{position:fixed; inset:0; background:rgba(7,26,47,.6); z-index:100; display:none; align-items:center; justify-content:center; padding:16px;}
+  .modal-overlay.open{display:flex;}
+  .modal-box{background:#fff; border-radius:1.5rem; max-width:720px; width:100%; max-height:90vh; overflow-y:auto; padding:28px; position:relative; box-shadow:0 20px 60px rgba(7,26,47,.3);}
+  .modal-close{position:absolute; top:16px; left:16px; rtl:right:16px; width:34px; height:34px; border-radius:9999px; background:var(--sky); display:flex; align-items:center; justify-content:center; color:var(--navy); font-weight:800; cursor:pointer;}
+  html[dir="rtl"] .modal-close{right:16px; left:auto;}
+  html[dir="ltr"] .modal-close{left:auto; right:16px;}
+  .region-card{border:2px solid rgba(11,36,71,.1); border-radius:1.25rem; padding:20px; cursor:pointer; transition:all .2s ease;}
+  .region-card:hover{border-color:var(--gold); transform:translateY(-2px); box-shadow:0 10px 25px rgba(245,166,35,.15);}
+  .bank-row{display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:var(--sky); border-radius:0.75rem; margin-bottom:8px; font-size:14px;}
+  .bank-copy-btn{font-size:11px; font-weight:800; color:var(--ocean); cursor:pointer; background:#fff; border-radius:9999px; padding:4px 10px;}
 </style>
 </head>
 <body class="antialiased">
@@ -124,6 +169,7 @@
 </a>
 
 <!-- ===================== NAVBAR ===================== -->
+<div style="height:4px; background:repeating-linear-gradient(90deg, var(--navy) 0 26px, var(--gold) 26px 30px, var(--navy) 30px 56px, var(--lane) 56px 60px);"></div>
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-navy/10 shadow-sm">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3.5 flex items-center justify-between gap-4">
     <div class="flex items-center gap-2 shrink-0">
@@ -132,7 +178,6 @@
     </div>
     <nav class="hidden md:flex items-center gap-6 text-sm text-navy/70">
       <a href="#levels" class="hover:text-ocean transition" data-i18n="nav_modules">المستويات</a>
-      <a href="#lecturer" class="hover:text-ocean transition" data-i18n="nav_lecturer">المحاضر</a>
       <a href="#details" class="hover:text-ocean transition" data-i18n="nav_details">التفاصيل</a>
       <a href="#pricing" class="hover:text-ocean transition" data-i18n="nav_pricing">الأسعار</a>
       <a href="#faq" class="hover:text-ocean transition" data-i18n="nav_faq">الأسئلة الشائعة</a>
@@ -142,9 +187,9 @@
         <button id="btn-ar" onclick="setLang('ar')" class="active">AR</button>
         <button id="btn-en" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#register" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-bold px-4 py-2.5 rounded-full text-sm shadow-lg shadow-gold/20 whitespace-nowrap" data-i18n="nav_cta">
+      <button onclick="openRegionModal()" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-bold px-4 py-2.5 rounded-full text-sm shadow-lg shadow-gold/20 whitespace-nowrap" data-i18n="nav_cta">
         سجّل الآن
-      </a>
+      </button>
     </div>
   </div>
 </header>
@@ -157,30 +202,31 @@
     <div class="rounded-[2rem] overflow-hidden shadow-xl grid md:grid-cols-2 bg-white border border-navy/5">
 
       <div class="relative p-7 sm:p-10 md:p-12 flex flex-col justify-center">
-        <span class="inline-flex items-center gap-2 bg-sky text-ocean text-xs font-bold px-4 py-1.5 rounded-full mb-5 w-fit" data-i18n="hero_badge">
-          معتمدة من ASCA واتحاد الإمارات للسباحة
+        <span class="tag-chip gold mb-5 w-fit" data-i18n="hero_badge">
+          معتمدة من ASCA العالمية
         </span>
         <h1 class="display text-navy font-black text-3xl md:text-4xl leading-[1.25] mb-4 tracking-tight" data-i18n="hero_title">
-          دورة اعتماد تدريب السباحة الدولي (ASCA) — سبتمبر 2026
+          دورة اعتماد تدريب السباحة الدولي (ASCA) — أونلاين، نوفمبر 2026
         </h1>
         <p class="text-navy/60 text-base mb-6 leading-relaxed max-w-lg" data-i18n="hero_sub">
-          أهّل نفسك كمدرب سباحة معتمد دوليًا. حضوري باللجنة الأولمبية الوطنية الإماراتية أو أونلاين مباشر (B-Live).
+          أهّل نفسك كمدرب سباحة معتمد دوليًا من أي مكان في العالم. دورة أونلاين بالكامل عبر ASCA العالمية.
         </p>
 
         <div class="flex flex-wrap gap-2.5 mb-7 text-sm">
-          <span class="bg-sky border border-navy/5 rounded-full px-4 py-2 text-navy/70" data-i18n="hero_dates">📅 21–25 سبتمبر 2026</span>
-          <span class="bg-sky border border-navy/5 rounded-full px-4 py-2 text-navy/70" data-i18n="hero_time">🕓 4:00–9:00 مساءً</span>
-          <span class="bg-sky border border-navy/5 rounded-full px-4 py-2 text-navy/70" data-i18n="hero_place">📍 اللجنة الأولمبية أو أونلاين</span>
+          <span class="bg-sky border-2 border-navy/10 rounded-lg px-4 py-2 text-navy/70 font-semibold" data-i18n="hero_dates">📅 التسجيل يُغلق 13 نوفمبر 2026</span>
+          <span class="bg-sky border-2 border-navy/10 rounded-lg px-4 py-2 text-navy/70 font-semibold" data-i18n="hero_time">🌐 أونلاين بالكامل</span>
+          <span class="bg-sky border-2 border-navy/10 rounded-lg px-4 py-2 text-navy/70 font-semibold" data-i18n="hero_place">📍 متاحة لجميع الدول</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 mb-8">
-          <a href="https://wa.me/971588243192" target="_blank"
+          <button onclick="openRegionModal()"
              class="ripple-btn pulse-cta bg-gold hover:bg-gold-light text-navy font-extrabold px-6 py-3 rounded-full flex items-center gap-2 shadow-xl shadow-gold/25 text-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.63 4.62 1.727 6.555L4 29l7.637-1.686A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3z"/></svg>
+            <span data-i18n="hero_cta_online">سجّل في الكورس الأونلاين</span>
+          </button>
+          <a href="https://wa.me/971588243192" target="_blank"
+             class="ripple-btn bg-white hover:bg-sky text-navy font-bold px-6 py-3 rounded-full flex items-center gap-2 shadow-md border border-navy/10 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4" fill="#25D366"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.63 4.62 1.727 6.555L4 29l7.637-1.686A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3z"/></svg>
             <span data-i18n="hero_cta_whatsapp">تواصل واتساب</span>
-          </a>
-          <a href="#pricing" class="text-navy hover:text-ocean font-semibold text-sm border border-navy/15 px-6 py-3 rounded-full hover:bg-sky transition" data-i18n="hero_cta_pricing">
-            الأسعار والباقات
           </a>
         </div>
 
@@ -193,7 +239,16 @@
       </div>
 
       <div class="relative min-h-[300px] sm:min-h-[380px] md:min-h-0 overflow-hidden">
-        <div class="absolute inset-0" style="background:linear-gradient(155deg, var(--ocean) 0%, var(--deep) 55%, var(--ink) 100%);"></div>
+        <img src="https://images.unsplash.com/photo-1560090963-4fde545b73de?fm=jpg&q=80&w=1400&auto=format&fit=crop"
+             alt="Competitive swimmers training" loading="lazy"
+             class="hero-slide absolute inset-0 w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?fm=jpg&q=80&w=1400&auto=format&fit=crop"
+             alt="Swimmer racing in an Olympic pool" loading="lazy"
+             class="hero-slide absolute inset-0 w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1560090947-5307abc46ffc?fm=jpg&q=80&w=1400&auto=format&fit=crop"
+             alt="Swimming competition in daylight" loading="lazy"
+             class="hero-slide absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0" style="background:linear-gradient(155deg, rgba(28,127,166,.55) 0%, rgba(14,58,92,.65) 55%, rgba(4,14,28,.85) 100%);"></div>
 
         <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 400" preserveAspectRatio="none">
           <path class="swim-ripple" stroke="#EAFBFA" stroke-width="2" fill="none" stroke-dasharray="10 8" d="M-20,90 Q40,60 100,90 T220,90 T340,90 T460,90"/>
@@ -207,16 +262,6 @@
         <span class="bubble w-1.5 h-1.5" style="left:70%; bottom:10%; animation-duration:4.5s; animation-delay:2.2s;"></span>
         <span class="bubble w-1 h-1" style="left:46%; bottom:22%; animation-duration:3.5s; animation-delay:.5s;"></span>
         <span class="bubble w-1.5 h-1.5" style="left:80%; bottom:26%; animation-duration:5.5s; animation-delay:1.8s;"></span>
-
-        <svg viewBox="0 0 200 200" class="float-swim absolute inset-0 m-auto w-[68%] h-[68%] text-white" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="100" cy="35" r="14" fill="currentColor" stroke="none"/>
-          <g class="swim-arm">
-            <path d="M70 55 C 60 70, 60 90, 80 100 L 110 90" />
-            <path d="M110 90 L 150 75" />
-          </g>
-          <path d="M80 100 L 60 130" />
-          <path d="M80 100 L 100 135" />
-        </svg>
 
         <div class="absolute bottom-5 inset-x-5 sm:bottom-6 sm:inset-x-7">
           <p class="display text-white font-black text-lg sm:text-2xl leading-tight" data-i18n="hero_caption">اسبح. تدرّب. اعتمِد دوليًا.</p>
@@ -237,6 +282,24 @@
     </div>
   </div>
 </section>
+
+<!-- ===================== STAT STRIP ===================== -->
+<div class="stat-strip">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-7 relative grid grid-cols-3 gap-4 text-center">
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label" data-i18n="stat_1_label">مستويات معتمدة</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label" data-i18n="stat_2_label">أونلاين بالكامل</div>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--gold);">13 Nov</div>
+      <div class="stat-label" data-i18n="stat_3_label">آخر موعد للتسجيل</div>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== LEVELS (badges) ===================== -->
 <section id="levels" class="max-w-6xl mx-auto px-5 sm:px-8 py-16">
@@ -263,59 +326,37 @@
   </div>
 </section>
 
-<!-- ===================== المحاضر الدولي ===================== -->
-<section id="lecturer" class="bg-white border-y border-navy/5">
-  <div class="max-w-5xl mx-auto px-5 sm:px-8 py-16">
-    <div class="grid md:grid-cols-[220px_1fr] gap-8 items-center">
-      <div class="justify-self-center">
-        <img src="data:image/jpeg;base64,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" alt="John Dusselier" class="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-gold shadow-xl mx-auto">
-      </div>
-      <div class="text-center md:text-start">
-        <span class="text-ocean font-bold text-sm" data-i18n="coach_eyebrow">المحاضر الدولي</span>
-        <h2 class="display text-2xl md:text-3xl font-black text-navy mt-1 mb-4">John Dusselier</h2>
-        <ul class="space-y-2.5 text-navy/70 text-sm max-w-xl mx-auto md:mx-0">
-          <li class="flex gap-2 items-start justify-center md:justify-start"><span class="text-gold mt-0.5">◆</span><span data-i18n="coach_li1">محاضر دولي معتمد من الجمعية الأمريكية لمدربي السباحة (ASCA)</span></li>
-          <li class="flex gap-2 items-start justify-center md:justify-start"><span class="text-gold mt-0.5">◆</span><span data-i18n="coach_li2">خبرة واسعة في تدريب وتأهيل مدربي السباحة على المستوى الدولي</span></li>
-          <li class="flex gap-2 items-start justify-center md:justify-start"><span class="text-gold mt-0.5">◆</span><span data-i18n="coach_li3">متخصص في تحليل الأداء الفني وتطوير برامج التدريب الحديثة</span></li>
-          <li class="flex gap-2 items-start justify-center md:justify-start"><span class="text-gold mt-0.5">◆</span><span data-i18n="coach_li4">شارك في تأهيل وتخريج مدربين معتمدين في عدة دول حول العالم</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== تفاصيل الدورة ===================== -->
 <section id="details" class="bg-white border-y border-navy/5">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-14">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <a href="https://www.google.com/maps/search/?api=1&query=UAE+National+Olympic+Committee+701+Business+Village+Block+B+Dubai" target="_blank" rel="noopener" class="text-center group cursor-pointer">
-        <div class="w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center mx-auto mb-3 group-hover:bg-gold/25 transition">
+      <div class="text-center">
+        <div class="w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center mx-auto mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
-        <h3 class="font-bold text-navy text-sm group-hover:text-ocean transition" data-i18n="det_1_title">المكان</h3>
-        <p class="text-sm text-navy/60" data-i18n="det_1_desc">اللجنة الأولمبية الوطنية الإماراتية</p>
-        <p class="text-xs text-ocean font-semibold mt-1 underline decoration-dotted" data-i18n="det_1_directions">📍 عرض الموقع على الخريطة</p>
-      </a>
+        <h3 class="font-bold text-navy text-sm" data-i18n="det_1_title">المكان</h3>
+        <p class="text-sm text-navy/60" data-i18n="det_1_desc">أونلاين بالكامل — متاحة من أي دولة</p>
+      </div>
       <div class="text-center">
         <div class="w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center mx-auto mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="font-bold text-navy text-sm" data-i18n="det_2_title">المواعيد</h3>
-        <p class="text-sm text-navy/60" data-i18n="det_2_desc">21–25 سبتمبر 2026</p>
+        <h3 class="font-bold text-navy text-sm" data-i18n="det_2_title">موعد التسجيل</h3>
+        <p class="text-sm text-navy/60" data-i18n="det_2_desc">يُغلق التسجيل 13 نوفمبر 2026</p>
       </div>
       <div class="text-center">
         <div class="w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center mx-auto mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h3 class="font-bold text-navy text-sm" data-i18n="det_3_title">التوقيت</h3>
-        <p class="text-sm text-navy/60" data-i18n="det_3_desc">4:00–9:00 مساءً</p>
+        <p class="text-sm text-navy/60" data-i18n="det_3_desc">يتم تأكيده بعد التسجيل حسب توقيتك</p>
       </div>
       <div class="text-center">
         <div class="w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center mx-auto mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.618V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
         </div>
         <h3 class="font-bold text-navy text-sm" data-i18n="det_4_title">الحضور</h3>
-        <p class="text-sm text-navy/60" data-i18n="det_4_desc">حضوري أو B-Live (خارج الإمارات)</p>
+        <p class="text-sm text-navy/60" data-i18n="det_4_desc">أونلاين فقط (B-Live)</p>
       </div>
     </div>
   </div>
@@ -328,50 +369,42 @@
       <span class="text-ocean font-bold text-sm" data-i18n="price_eyebrow">الأسعار</span>
       <h2 class="display text-2xl md:text-3xl font-black text-navy mt-2" data-i18n="price_title">اختر باقتك</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-6">
+    <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-6">
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md">
         <h3 class="font-bold text-navy" data-i18n="price_1_title">المستويان 1 و2</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">2,600</span>
+          <span class="display text-3xl font-black text-navy">2,000</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
-        <a href="https://ipg.comtrust.ae/e/nvoice/i?n=76f63d16c5d7423cbf0ad8941e7f46c9" target="_blank" rel="noopener" class="block text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_1_cta">ادفع الآن</a>
+        <button onclick="openRegionModal()" class="block w-full text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_1_cta">سجّل الآن</button>
       </div>
-      <div class="bg-white rounded-2xl p-7 card-lift shadow-md">
-        <h3 class="font-bold text-navy" data-i18n="price_3_title">المستوى الثالث فقط</h3>
+      <div class="bg-white rounded-2xl p-7 card-lift accent-gold shadow-md relative ring-2 ring-gold">
+        <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 bg-gold text-navy text-xs font-black px-3 py-1 rounded-full" data-i18n="price_3_flag">الأشمل</span>
+        <h3 class="font-bold text-navy" data-i18n="price_3_title">الباقة الكاملة (المستويات 1 إلى 3)</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">1,700</span>
+          <span class="display text-3xl font-black text-navy">3,200</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
-        <a href="https://ipg.comtrust.ae/e/nvoice/i?n=194fcae37ec74e63af464d2899feaa95" target="_blank" rel="noopener" class="block text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_3_cta">ادفع الآن</a>
-      </div>
-      <div class="bg-white rounded-2xl p-7 card-lift shadow-md relative ring-2 ring-gold">
-        <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 bg-gold text-navy text-xs font-black px-3 py-1 rounded-full" data-i18n="price_2_flag">الأشمل</span>
-        <h3 class="font-bold text-navy" data-i18n="price_2_title">الباقة الكاملة 1+2+3</h3>
-        <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">4,000</span>
-          <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
-        </div>
-        <a href="https://ipg.comtrust.ae/e/nvoice/i?n=3757ec5bb4d9499b84df00de5bfa55f0" target="_blank" rel="noopener" class="ripple-btn block text-center bg-gold hover:bg-gold-light text-navy font-black py-2.5 rounded-full shadow-lg shadow-gold/30 transition text-sm" data-i18n="price_2_cta">ادفع الآن</a>
+        <button onclick="openRegionModal()" class="ripple-btn block w-full text-center bg-gold hover:bg-gold-light text-navy font-black py-2.5 rounded-full shadow-lg shadow-gold/30 transition text-sm" data-i18n="price_3_cta">سجّل الآن</button>
       </div>
     </div>
 
     <p class="text-center text-navy/60 text-sm mb-8" data-i18n="price_note">
-      يمكنك الدفع الكامل مباشرة عبر رابط الباقة، أو التقسيط عبر Tabby أو Tamara بالتواصل معنا على واتساب
+      يمكنك الدفع الكامل، التحويل البنكي، أو التقسيط عبر Tabby أو Tamara.
     </p>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto mb-3">
-      <a href="https://forms.gle/NZUtM6aTfMw3gCzj8" target="_blank" rel="noopener" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition" data-i18n="cta_inperson">تسجيل حضوري — اللجنة الأولمبية</a>
-      <a href="https://forms.gle/bfco3rxi4RgWWnup8" target="_blank" rel="noopener" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition" data-i18n="cta_online">تسجيل أونلاين — B-Live</a>
+      <button onclick="openRegionModal()" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition" data-i18n="cta_online">سجّل في الكورس الأونلاين</button>
+      <button onclick="openBankModal()" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition" data-i18n="cta_bank">🏦 بيانات الحساب البنكي</button>
       <a href="https://wa.me/971588243192" target="_blank" class="bg-[#25D366] hover:brightness-110 text-white font-bold text-sm text-center px-4 py-3.5 rounded-xl flex items-center justify-center gap-2 transition">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.63 4.62 1.727 6.555L4 29l7.637-1.686A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3z"/></svg>
         <span data-i18n="cta_whatsapp">واتساب</span>
       </a>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto mb-8">
-      <a href="https://ipg.comtrust.ae/e/nvoice/i?n=6665977c699843aa8b4ec35001fbd20b" target="_blank" rel="noopener" class="block text-center bg-white hover:bg-sky border border-navy/10 text-navy/90 font-semibold text-sm px-4 py-3 rounded-xl shadow-sm transition" data-i18n="cta_deposit">💳 دفع دفعة مقدمة فقط (1,000 د.إ)</a>
-      <a href="https://wa.me/971586003391?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AF%D9%81%D8%B9%20%D8%B1%D8%B3%D9%88%D9%85%20%D8%AA%D9%88%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9%20%D9%84%D9%83%D9%88%D8%B1%D8%B3%20ASCA" target="_blank" rel="noopener" class="block text-center bg-white hover:bg-sky border border-navy/10 text-navy/90 font-semibold text-sm px-4 py-3 rounded-xl shadow-sm transition" data-i18n="cta_shipping">📦 رسوم شحن الشهادة خارج الدولة (100 د.إ)</a>
+    <div class="grid sm:grid-cols-1 gap-3 max-w-2xl mx-auto mb-8">
+      <a href="https://forms.gle/kRBeXPEnhV3S6saF6" target="_blank" rel="noopener" class="block text-center bg-white hover:bg-sky border border-navy/10 text-navy/90 font-semibold text-sm px-4 py-3 rounded-xl shadow-sm transition" data-i18n="cta_deposit">📝 نموذج التسجيل الرسمي</a>
+      <a href="https://wa.me/971586003391?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AF%D9%81%D8%B9%20%D8%B1%D8%B3%D9%88%D9%85%20%D8%AA%D9%88%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%B4%D9%87%D8%A7%D8%AF%D8%A9%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9%20%D9%84%D9%83%D9%88%D8%B1%D8%B3%20ASCA" target="_blank" rel="noopener" class="block text-center bg-white hover:bg-sky border border-navy/10 text-navy/90 font-semibold text-sm px-4 py-3 rounded-xl shadow-sm transition" data-i18n="cta_shipping">📦 رسوم شحن الشهادة/الكارت خارج الدولة (100 د.إ)</a>
     </div>
 
     <p class="text-center text-navy/50 text-xs mb-3" data-i18n="cta_installment_label">الدفع بالتقسيط</p>
@@ -386,50 +419,91 @@
   </div>
 </section>
 
-<!-- ===================== نموذج التسجيل ===================== -->
-<section id="register" class="max-w-2xl mx-auto px-5 sm:px-8 py-16">
-  <div class="text-center mb-8">
+<!-- ===================== خطوات التسجيل ===================== -->
+<section id="register-steps" class="max-w-4xl mx-auto px-5 sm:px-8 py-16">
+  <div class="text-center mb-10">
     <span class="text-ocean font-bold text-sm" data-i18n="reg_eyebrow">التسجيل</span>
-    <h2 class="display text-2xl md:text-3xl font-black text-navy mt-2" data-i18n="reg_title">اترك بياناتك وسنتواصل معك</h2>
+    <h2 class="display text-2xl md:text-3xl font-black text-navy mt-2" data-i18n="reg_title">كيف تسجّل؟ 4 خطوات بسيطة</h2>
   </div>
-  <form id="ascaRegForm" class="bg-white rounded-3xl shadow-xl border border-navy/5 p-6 sm:p-9 grid gap-4">
-    <input type="hidden" name="_subject" value="تسجيل جديد - دورة ASCA">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <div class="grid sm:grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-bold text-navy mb-1.5" data-i18n="reg_name_label">الاسم بالكامل</label>
-        <input name="الاسم بالكامل" required type="text" data-i18n-ph="reg_name_ph" placeholder="اكتب اسمك" class="w-full border border-navy/15 rounded-xl px-4 py-2.5 focus:border-ocean transition">
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-navy mb-1.5" data-i18n="reg_phone_label">رقم الواتساب</label>
-        <input name="رقم الواتساب" required type="tel" data-i18n-ph="reg_phone_ph" placeholder="+971 5xxxxxxxx" class="w-full border border-navy/15 rounded-xl px-4 py-2.5 focus:border-ocean transition">
-      </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="bg-white rounded-2xl p-6 card-lift shadow-md text-center">
+      <div class="w-10 h-10 rounded-full bg-gold text-navy font-black flex items-center justify-center mx-auto mb-3">1</div>
+      <h3 class="font-bold text-navy text-sm mb-1.5" data-i18n="reg_step1_title">اختر موقعك</h3>
+      <p class="text-navy/60 text-sm" data-i18n="reg_step1_desc">هل تسجّل من داخل الإمارات أو من دول الخليج؟</p>
     </div>
-    <div class="grid sm:grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-bold text-navy mb-1.5" data-i18n="reg_attend_label">نوع الحضور</label>
-        <select name="نوع الحضور" class="w-full border border-navy/15 rounded-xl px-4 py-2.5 focus:border-ocean transition bg-white">
-          <option data-i18n="reg_attend_opt1">حضوري — اللجنة الأولمبية</option>
-          <option data-i18n="reg_attend_opt2">أونلاين — B-Live</option>
-        </select>
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-navy mb-1.5" data-i18n="reg_level_label">المستوى المطلوب</label>
-        <select name="المستوى المطلوب" class="w-full border border-navy/15 rounded-xl px-4 py-2.5 focus:border-ocean transition bg-white">
-          <option data-i18n="reg_level_opt1">المستويان 1 و2</option>
-          <option data-i18n="reg_level_opt4">المستوى الثالث فقط</option>
-          <option data-i18n="reg_level_opt2">الباقة الكاملة (1+2+3)</option>
-          <option data-i18n="reg_level_opt3">لست متأكدًا بعد</option>
-        </select>
-      </div>
+    <div class="bg-white rounded-2xl p-6 card-lift shadow-md text-center">
+      <div class="w-10 h-10 rounded-full bg-gold text-navy font-black flex items-center justify-center mx-auto mb-3">2</div>
+      <h3 class="font-bold text-navy text-sm mb-1.5" data-i18n="reg_step2_title">اختر باقتك</h3>
+      <p class="text-navy/60 text-sm" data-i18n="reg_step2_desc">المستويان 1 و2، أو الباقة الكاملة (المستويات 1 إلى 3)</p>
     </div>
-    <button type="submit" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-black py-3.5 rounded-full text-base shadow-lg shadow-gold/25 mt-1" data-i18n="reg_submit">
-      احجز مقعدي
+    <div class="bg-white rounded-2xl p-6 card-lift shadow-md text-center">
+      <div class="w-10 h-10 rounded-full bg-gold text-navy font-black flex items-center justify-center mx-auto mb-3">3</div>
+      <h3 class="font-bold text-navy text-sm mb-1.5" data-i18n="reg_step3_title">عبّئ نموذج التسجيل</h3>
+      <p class="text-navy/60 text-sm" data-i18n="reg_step3_desc">أدخل بياناتك في نموذج التسجيل الرسمي أونلاين</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 card-lift shadow-md text-center">
+      <div class="w-10 h-10 rounded-full bg-gold text-navy font-black flex items-center justify-center mx-auto mb-3">4</div>
+      <h3 class="font-bold text-navy text-sm mb-1.5" data-i18n="reg_step4_title">أكمل الدفع</h3>
+      <p class="text-navy/60 text-sm" data-i18n="reg_step4_desc">تحويل بنكي، Tabby، Tamara، أو تواصل معنا على واتساب</p>
+    </div>
+  </div>
+  <div class="text-center mt-8">
+    <button onclick="openRegionModal()" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-black px-8 py-3.5 rounded-full text-sm shadow-lg shadow-gold/25" data-i18n="reg_submit">
+      ابدأ التسجيل الآن
     </button>
-    <p id="regStatus" class="text-center text-sm"></p>
-  </form>
+  </div>
 </section>
+
+<!-- ===================== نافذة اختيار الموقع (الإمارات/دول الخليج) ===================== -->
+<div id="regionModal" class="modal-overlay">
+  <div class="modal-box">
+    <span class="modal-close" onclick="closeRegionModal()">✕</span>
+    <div class="text-center mb-6">
+      <h3 class="display text-xl md:text-2xl font-black text-navy" data-i18n="modal_region_title">أين ستُسجّل؟</h3>
+      <p class="text-navy/60 text-sm mt-1" data-i18n="modal_region_sub">اختر موقعك لمعرفة الشهادات التي ستحصل عليها</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4 mb-5">
+      <div class="region-card">
+        <div class="text-2xl mb-2">🇦🇪</div>
+        <h4 class="font-bold text-navy mb-2" data-i18n="modal_uae_title">داخل الإمارات</h4>
+        <ul class="text-sm text-navy/70 space-y-1.5 mb-4">
+          <li data-i18n="modal_uae_f1">✓ شهادة ASCA الأمريكية</li>
+          <li data-i18n="modal_uae_f2">✓ شهادة اتحاد الإمارات للسباحة</li>
+        </ul>
+        <a href="https://forms.gle/kRBeXPEnhV3S6saF6" target="_blank" rel="noopener" class="ripple-btn block text-center bg-navy hover:bg-deep text-white font-bold py-2.5 rounded-full text-sm transition" data-i18n="modal_cta">سجّل الآن</a>
+      </div>
+      <div class="region-card">
+        <div class="text-2xl mb-2">🌍</div>
+        <h4 class="font-bold text-navy mb-2" data-i18n="modal_outside_title">دول الخليج</h4>
+        <ul class="text-sm text-navy/70 space-y-1.5 mb-4">
+          <li data-i18n="modal_outside_f1">✓ شهادة ASCA الأمريكية</li>
+          <li data-i18n="modal_outside_f2">✓ كارت ASCA مجاني (عند إتمام المستويات الثلاثة)</li>
+        </ul>
+        <a href="https://forms.gle/kRBeXPEnhV3S6saF6" target="_blank" rel="noopener" class="ripple-btn block text-center bg-gold hover:bg-gold-light text-navy font-black py-2.5 rounded-full text-sm shadow-lg shadow-gold/25 transition" data-i18n="modal_cta">سجّل الآن</a>
+      </div>
+    </div>
+    <p class="text-center text-navy/50 text-xs" data-i18n="modal_region_note">آخر موعد للتسجيل: 13 نوفمبر 2026 — للاستفسار تواصل معنا على واتساب</p>
+  </div>
+</div>
+
+<!-- ===================== نافذة بيانات الحساب البنكي ===================== -->
+<div id="bankModal" class="modal-overlay">
+  <div class="modal-box" style="max-width:480px;">
+    <span class="modal-close" onclick="closeBankModal()">✕</span>
+    <div class="text-center mb-5">
+      <h3 class="display text-xl font-black text-navy" data-i18n="modal_bank_title">بيانات التحويل البنكي</h3>
+      <p class="text-navy/60 text-sm mt-1" data-i18n="modal_bank_sub">يرجى إرسال إيصال التحويل على واتساب لتأكيد التسجيل</p>
+    </div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_holder_label">اسم الحساب</span><span class="font-bold text-navy" data-i18n="bank_holder_value">Professional Sports &amp; Lifeguard Services</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_name_label">اسم البنك</span><span class="font-bold text-navy" data-i18n="bank_name_value">Dubai Islamic Bank</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_acc_label">رقم الحساب</span><span class="font-bold text-navy" data-i18n="bank_acc_value">0435 2011 0746 901</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_iban_label">IBAN</span><span class="font-bold text-navy" data-i18n="bank_iban_value">AE77 0240 0435 2011 0746 901</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_swift_label">رمز Swift</span><span class="font-bold text-navy" data-i18n="bank_swift_value">DUIBAEAD</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_customer_label">رقم العميل</span><span class="font-bold text-navy" data-i18n="bank_customer_value">1107469</span></div>
+    <div class="bank-row"><span class="text-navy/60" data-i18n="bank_address_label">عنوان البنك</span><span class="font-bold text-navy" data-i18n="bank_address_value">Oud Metha, Dubai</span></div>
+    <a href="https://wa.me/971588243192" target="_blank" class="ripple-btn block text-center bg-[#25D366] hover:brightness-110 text-white font-bold py-2.5 rounded-full text-sm mt-4 transition" data-i18n="modal_bank_confirm">أرسل إيصال التحويل على واتساب</a>
+  </div>
+</div>
 
 <!-- ===================== FAQ ===================== -->
 <section id="faq" class="bg-white border-t border-navy/5">
@@ -440,24 +514,24 @@
     <div class="space-y-3">
       <details class="group border border-navy/10 rounded-xl p-4" open>
         <summary class="flex justify-between items-center font-bold text-navy text-sm gap-3">
-          <span data-i18n="faq_1_q">هل الشهادة معترف بها دوليًا؟</span>
+          <span data-i18n="faq_1_q">هل الدورة أونلاين بالكامل؟</span>
           <svg class="chev w-4 h-4 text-ocean transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_1_a">نعم، معتمدة من ASCA (أمريكا) واتحاد الإمارات للسباحة.</p>
+        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_1_a">نعم، دورة ASCA العالمية الجديدة أونلاين بالكامل ومتاحة لجميع الدول.</p>
       </details>
       <details class="group border border-navy/10 rounded-xl p-4">
         <summary class="flex justify-between items-center font-bold text-navy text-sm gap-3">
-          <span data-i18n="faq_2_q">هل يمكن الحضور أونلاين من خارج الإمارات؟</span>
+          <span data-i18n="faq_2_q">ما الفرق بين التسجيل من داخل الإمارات ومن دول الخليج؟</span>
           <svg class="chev w-4 h-4 text-ocean transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_2_a">نعم، خيار B-Live متاح حصريًا لمن هم خارج الإمارات، بنفس الشهادة.</p>
+        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_2_a">المسجّلون داخل الإمارات يحصلون على شهادة ASCA وشهادة اتحاد الإمارات للسباحة. مسجّلو دول الخليج يحصلون على شهادة ASCA وكارت ASCA مجاني عند إتمام المستويات الثلاثة الأولى.</p>
       </details>
       <details class="group border border-navy/10 rounded-xl p-4">
         <summary class="flex justify-between items-center font-bold text-navy text-sm gap-3">
-          <span data-i18n="faq_3_q">كيف أؤكد حجزي؟</span>
+          <span data-i18n="faq_3_q">متى يُغلق باب التسجيل؟</span>
           <svg class="chev w-4 h-4 text-ocean transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_3_a">بدفع دفعة مقدمة قدرها 1,000 د.إ، مع إمكانية التقسيط عبر Tabby أو Tamara.</p>
+        <p class="text-navy/60 text-sm mt-2.5 leading-relaxed" data-i18n="faq_3_a">التسجيل مفتوح حتى 13 نوفمبر 2026. يمكنك الدفع كاملًا، بالتحويل البنكي، أو بالتقسيط عبر Tabby أو Tamara.</p>
       </details>
     </div>
   </div>
@@ -491,21 +565,23 @@
 const translations = {
   ar: {
     nav_modules: "المستويات",
-    nav_lecturer: "المحاضر",
     nav_details: "التفاصيل",
     nav_pricing: "الأسعار",
     nav_faq: "الأسئلة الشائعة",
     nav_cta: "سجّل الآن",
 
-    hero_badge: "معتمدة من ASCA واتحاد الإمارات للسباحة",
-    hero_title: "دورة اعتماد تدريب السباحة الدولي (ASCA) — سبتمبر 2026",
-    hero_sub: "أهّل نفسك كمدرب سباحة معتمد دوليًا. حضوري باللجنة الأولمبية الوطنية الإماراتية أو أونلاين مباشر (B-Live).",
-    hero_dates: "📅 21–25 سبتمبر 2026",
-    hero_time: "🕓 4:00–9:00 مساءً",
-    hero_place: "📍 اللجنة الأولمبية أو أونلاين",
+    hero_badge: "معتمدة من ASCA العالمية",
+    hero_title: "دورة اعتماد تدريب السباحة الدولي (ASCA) — أونلاين، نوفمبر 2026",
+    hero_sub: "أهّل نفسك كمدرب سباحة معتمد دوليًا من أي مكان في العالم. دورة أونلاين بالكامل عبر ASCA العالمية.",
+    hero_dates: "📅 التسجيل يُغلق 13 نوفمبر 2026",
+    hero_time: "🌐 أونلاين بالكامل",
+    hero_place: "📍 متاحة لجميع الدول",
     hero_cta_whatsapp: "تواصل واتساب",
-    hero_cta_pricing: "الأسعار والباقات",
+    hero_cta_online: "سجّل في الكورس الأونلاين",
     hero_caption: "اسبح. تدرّب. اعتمِد دوليًا.",
+    stat_1_label: "مستويات معتمدة",
+    stat_2_label: "أونلاين بالكامل",
+    stat_3_label: "آخر موعد للتسجيل",
 
     lvl_eyebrow: "محتوى الدورة",
     lvl_title: "ثلاثة مستويات معتمدة من ASCA",
@@ -516,83 +592,100 @@ const translations = {
     lvl_3_title: "المستوى الثالث",
     lvl_3_desc: "فسيولوجيا الأداء وتحليل بيانات السباحين",
 
-    coach_eyebrow: "المحاضر الدولي",
-    coach_li1: "محاضر دولي معتمد من الجمعية الأمريكية لمدربي السباحة (ASCA)",
-    coach_li2: "خبرة واسعة في تدريب وتأهيل مدربي السباحة على المستوى الدولي",
-    coach_li3: "متخصص في تحليل الأداء الفني وتطوير برامج التدريب الحديثة",
-    coach_li4: "شارك في تأهيل وتخريج مدربين معتمدين في عدة دول حول العالم",
-
     det_1_title: "المكان",
-    det_1_desc: "اللجنة الأولمبية الوطنية الإماراتية، الإمارات العربية المتحدة",
-    det_1_directions: "📍 عرض الموقع على الخريطة",
-    det_2_title: "المواعيد",
-    det_2_desc: "21–25 سبتمبر 2026",
+    det_1_desc: "أونلاين بالكامل — متاحة من أي دولة",
+    det_2_title: "موعد التسجيل",
+    det_2_desc: "يُغلق التسجيل 13 نوفمبر 2026",
     det_3_title: "التوقيت",
-    det_3_desc: "4:00–9:00 مساءً",
+    det_3_desc: "يتم تأكيده بعد التسجيل حسب توقيتك",
     det_4_title: "الحضور",
-    det_4_desc: "حضوري أو B-Live (خارج الإمارات)",
+    det_4_desc: "أونلاين فقط (B-Live)",
 
     price_eyebrow: "الأسعار",
     price_title: "اختر باقتك",
     price_1_title: "المستويان 1 و2",
     price_currency: "د.إ",
-    price_1_cta: "ادفع الآن",
-    price_3_title: "المستوى الثالث فقط",
-    price_3_cta: "ادفع الآن",
-    price_2_flag: "الأشمل",
-    price_2_title: "الباقة الكاملة 1+2+3",
-    price_2_cta: "ادفع الآن",
-    price_note: "يمكنك الدفع الكامل مباشرة عبر رابط الباقة، أو التقسيط عبر Tabby أو Tamara بالتواصل معنا على واتساب",
-    cta_inperson: "تسجيل حضوري — اللجنة الأولمبية",
-    cta_online: "تسجيل أونلاين — B-Live",
+    price_1_cta: "سجّل الآن",
+    price_3_flag: "الأشمل",
+    price_3_title: "الباقة الكاملة (المستويات 1 إلى 3)",
+    price_3_cta: "سجّل الآن",
+    price_note: "يمكنك الدفع الكامل، التحويل البنكي، أو التقسيط عبر Tabby أو Tamara.",
+    cta_online: "سجّل في الكورس الأونلاين",
+    cta_bank: "🏦 بيانات الحساب البنكي",
     cta_whatsapp: "واتساب",
-    cta_shipping: "📦 رسوم شحن الشهادة خارج الدولة (100 د.إ)",
-    cta_deposit: "💳 دفع دفعة مقدمة فقط (1,000 د.إ)",
+    cta_shipping: "📦 رسوم شحن الشهادة/الكارت خارج الدولة (100 د.إ)",
+    cta_deposit: "📝 نموذج التسجيل الرسمي",
     cta_installment_label: "الدفع بالتقسيط",
 
     reg_eyebrow: "التسجيل",
-    reg_title: "اترك بياناتك وسنتواصل معك",
-    reg_name_label: "الاسم بالكامل",
-    reg_name_ph: "اكتب اسمك",
-    reg_phone_label: "رقم الواتساب",
-    reg_phone_ph: "+971 5xxxxxxxx",
-    reg_attend_label: "نوع الحضور",
-    reg_attend_opt1: "حضوري — اللجنة الأولمبية",
-    reg_attend_opt2: "أونلاين — B-Live",
-    reg_level_label: "المستوى المطلوب",
-    reg_level_opt1: "المستويان 1 و2",
-    reg_level_opt2: "الباقة الكاملة (1+2+3)",
-    reg_level_opt3: "لست متأكدًا بعد",
-    reg_level_opt4: "المستوى الثالث فقط",
-    reg_submit: "احجز مقعدي",
+    reg_title: "كيف تسجّل؟ 4 خطوات بسيطة",
+    reg_step1_title: "اختر موقعك",
+    reg_step1_desc: "هل تسجّل من داخل الإمارات أو من دول الخليج؟",
+    reg_step2_title: "اختر باقتك",
+    reg_step2_desc: "المستويان 1 و2، أو الباقة الكاملة (المستويات 1 إلى 3)",
+    reg_step3_title: "عبّئ نموذج التسجيل",
+    reg_step3_desc: "أدخل بياناتك في نموذج التسجيل الرسمي أونلاين",
+    reg_step4_title: "أكمل الدفع",
+    reg_step4_desc: "تحويل بنكي، Tabby، Tamara، أو تواصل معنا على واتساب",
+    reg_submit: "ابدأ التسجيل الآن",
+
+    modal_region_title: "أين ستُسجّل؟",
+    modal_region_sub: "اختر موقعك لمعرفة الشهادات التي ستحصل عليها",
+    modal_uae_title: "داخل الإمارات",
+    modal_uae_f1: "✓ شهادة ASCA الأمريكية",
+    modal_uae_f2: "✓ شهادة اتحاد الإمارات للسباحة",
+    modal_outside_title: "دول الخليج",
+    modal_outside_f1: "✓ شهادة ASCA الأمريكية",
+    modal_outside_f2: "✓ كارت ASCA مجاني (عند إتمام المستويات الثلاثة)",
+    modal_cta: "سجّل الآن",
+    modal_region_note: "آخر موعد للتسجيل: 13 نوفمبر 2026 — للاستفسار تواصل معنا على واتساب",
+    modal_bank_title: "بيانات التحويل البنكي",
+    modal_bank_sub: "يرجى إرسال إيصال التحويل على واتساب لتأكيد التسجيل",
+    bank_name_label: "اسم البنك",
+    bank_name_value: "Dubai Islamic Bank",
+    bank_holder_label: "اسم الحساب",
+    bank_holder_value: "Professional Sports &amp; Lifeguard Services",
+    bank_iban_label: "IBAN",
+    bank_iban_value: "AE77 0240 0435 2011 0746 901",
+    bank_acc_label: "رقم الحساب",
+    bank_acc_value: "0435 2011 0746 901",
+    bank_swift_label: "رمز Swift",
+    bank_swift_value: "DUIBAEAD",
+    bank_customer_label: "رقم العميل",
+    bank_customer_value: "1107469",
+    bank_address_label: "عنوان البنك",
+    bank_address_value: "Oud Metha, Dubai",
+    modal_bank_confirm: "أرسل إيصال التحويل على واتساب",
 
     faq_title: "الأسئلة الشائعة",
-    faq_1_q: "هل الشهادة معترف بها دوليًا؟",
-    faq_1_a: "نعم، معتمدة من ASCA (أمريكا) واتحاد الإمارات للسباحة.",
-    faq_2_q: "هل يمكن الحضور أونلاين من خارج الإمارات؟",
-    faq_2_a: "نعم، خيار B-Live متاح حصريًا لمن هم خارج الإمارات، بنفس الشهادة.",
-    faq_3_q: "كيف أؤكد حجزي؟",
-    faq_3_a: "بدفع دفعة مقدمة قدرها 1,000 د.إ، مع إمكانية التقسيط عبر Tabby أو Tamara.",
+    faq_1_q: "هل الدورة أونلاين بالكامل؟",
+    faq_1_a: "نعم، دورة ASCA العالمية الجديدة أونلاين بالكامل ومتاحة لجميع الدول.",
+    faq_2_q: "ما الفرق بين التسجيل من داخل الإمارات ومن دول الخليج؟",
+    faq_2_a: "المسجّلون داخل الإمارات يحصلون على شهادة ASCA وشهادة اتحاد الإمارات للسباحة. مسجّلو دول الخليج يحصلون على شهادة ASCA وكارت ASCA مجاني عند إتمام المستويات الثلاثة الأولى.",
+    faq_3_q: "متى يُغلق باب التسجيل؟",
+    faq_3_a: "التسجيل مفتوح حتى 13 نوفمبر 2026. يمكنك الدفع كاملًا، بالتحويل البنكي، أو بالتقسيط عبر Tabby أو Tamara.",
 
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   },
   en: {
     nav_modules: "Levels",
-    nav_lecturer: "Lecturer",
     nav_details: "Details",
     nav_pricing: "Pricing",
     nav_faq: "FAQ",
     nav_cta: "Register",
 
-    hero_badge: "Certified by ASCA &amp; UAE Aquatics",
-    hero_title: "ASCA International Swimming Coach Certification — September 2026",
-    hero_sub: "Become an internationally certified swim coach. In-person at the UAE National Olympic Committee, or live online (B-Live).",
-    hero_dates: "📅 21–25 September 2026",
-    hero_time: "🕓 4:00–9:00 PM",
-    hero_place: "📍 UAE Olympic Committee or Online",
+    hero_badge: "Certified by ASCA Global",
+    hero_title: "ASCA International Swimming Coach Certification — Online, November 2026",
+    hero_sub: "Become an internationally certified swim coach from anywhere in the world. A fully online course by ASCA Global.",
+    hero_dates: "📅 Registration closes 13 November 2026",
+    hero_time: "🌐 Fully Online",
+    hero_place: "📍 Open to all countries",
     hero_cta_whatsapp: "Chat on WhatsApp",
-    hero_cta_pricing: "Pricing &amp; Packages",
+    hero_cta_online: "Register for the Online Course",
     hero_caption: "Swim. Train. Get Certified.",
+    stat_1_label: "Certified Levels",
+    stat_2_label: "Fully Online",
+    stat_3_label: "Registration Deadline",
 
     lvl_eyebrow: "Course Content",
     lvl_title: "Three levels certified by ASCA",
@@ -603,63 +696,78 @@ const translations = {
     lvl_3_title: "Level 3",
     lvl_3_desc: "Performance physiology and swimmer analytics",
 
-    coach_eyebrow: "International Lecturer",
-    coach_li1: "Internationally certified lecturer by the American Swimming Coaches Association (ASCA)",
-    coach_li2: "Extensive experience coaching and training swim coaches internationally",
-    coach_li3: "Specialist in technical performance analysis and modern training program development",
-    coach_li4: "Helped train and certify coaches across multiple countries worldwide",
-
     det_1_title: "Location",
-    det_1_desc: "UAE National Olympic Committee, United Arab Emirates",
-    det_1_directions: "📍 View location on map",
-    det_2_title: "Dates",
-    det_2_desc: "21–25 September 2026",
+    det_1_desc: "Fully online — open to all countries",
+    det_2_title: "Registration Deadline",
+    det_2_desc: "Registration closes 13 November 2026",
     det_3_title: "Time",
-    det_3_desc: "4:00–9:00 PM",
+    det_3_desc: "Confirmed after registration based on your timezone",
     det_4_title: "Attendance",
-    det_4_desc: "In-person or B-Live (outside UAE)",
+    det_4_desc: "Online only (B-Live)",
 
     price_eyebrow: "Pricing",
     price_title: "Choose your package",
     price_1_title: "Levels 1 &amp; 2",
     price_currency: "AED",
-    price_1_cta: "Pay Now",
-    price_3_title: "Level 3 Only",
-    price_3_cta: "Pay Now",
-    price_2_flag: "Best Value",
-    price_2_title: "Full Package 1+2+3",
-    price_2_cta: "Pay Now",
-    price_note: "Pay in full directly via the package link, or split the payment via Tabby or Tamara by contacting us on WhatsApp",
-    cta_inperson: "Register — In-Person (Olympic Committee)",
-    cta_online: "Register — Online B-Live",
+    price_1_cta: "Register Now",
+    price_3_flag: "Best Value",
+    price_3_title: "Full Package (Levels 1 to 3)",
+    price_3_cta: "Register Now",
+    price_note: "Pay in full, by bank transfer, or in installments via Tabby or Tamara.",
+    cta_online: "Register for the Online Course",
+    cta_bank: "🏦 Bank Account Details",
     cta_whatsapp: "WhatsApp",
-    cta_shipping: "📦 Certificate Shipping Fee Outside UAE (100 AED)",
-    cta_deposit: "💳 Pay Deposit Only (1,000 AED)",
+    cta_shipping: "📦 Certificate/Card Shipping Fee Outside UAE (100 AED)",
+    cta_deposit: "📝 Official Registration Form",
     cta_installment_label: "Pay in Installments",
 
     reg_eyebrow: "Registration",
-    reg_title: "Leave your details and we'll be in touch",
-    reg_name_label: "Full Name",
-    reg_name_ph: "Enter your name",
-    reg_phone_label: "WhatsApp Number",
-    reg_phone_ph: "+971 5xxxxxxxx",
-    reg_attend_label: "Attendance Type",
-    reg_attend_opt1: "In-Person — Olympic Committee",
-    reg_attend_opt2: "Online — B-Live",
-    reg_level_label: "Level Required",
-    reg_level_opt1: "Levels 1 &amp; 2",
-    reg_level_opt2: "Full Package (1+2+3)",
-    reg_level_opt3: "Not sure yet",
-    reg_level_opt4: "Level 3 Only",
-    reg_submit: "Reserve My Seat",
+    reg_title: "How to register — 4 simple steps",
+    reg_step1_title: "Choose your location",
+    reg_step1_desc: "Are you registering from inside the UAE or from a GCC country?",
+    reg_step2_title: "Choose your package",
+    reg_step2_desc: "Levels 1 &amp; 2, or the Full Package (Levels 1 to 3)",
+    reg_step3_title: "Fill out the registration form",
+    reg_step3_desc: "Enter your details in the official online registration form",
+    reg_step4_title: "Complete payment",
+    reg_step4_desc: "Bank transfer, Tabby, Tamara, or contact us on WhatsApp",
+    reg_submit: "Start Registration",
+
+    modal_region_title: "Where will you register from?",
+    modal_region_sub: "Choose your location to see which certificates you'll receive",
+    modal_uae_title: "Inside the UAE",
+    modal_uae_f1: "✓ ASCA American Certificate",
+    modal_uae_f2: "✓ UAE Swimming Federation Certificate",
+    modal_outside_title: "GCC Residents",
+    modal_outside_f1: "✓ ASCA American Certificate",
+    modal_outside_f2: "✓ Free ASCA Card (upon completing all 3 levels)",
+    modal_cta: "Register Now",
+    modal_region_note: "Registration deadline: 13 November 2026 — for questions, contact us on WhatsApp",
+    modal_bank_title: "Bank Transfer Details",
+    modal_bank_sub: "Please send the transfer receipt on WhatsApp to confirm your registration",
+    bank_name_label: "Bank Name",
+    bank_name_value: "Dubai Islamic Bank",
+    bank_holder_label: "Account Name",
+    bank_holder_value: "Professional Sports &amp; Lifeguard Services",
+    bank_iban_label: "IBAN",
+    bank_iban_value: "AE77 0240 0435 2011 0746 901",
+    bank_acc_label: "Account Number",
+    bank_acc_value: "0435 2011 0746 901",
+    bank_swift_label: "Swift Code",
+    bank_swift_value: "DUIBAEAD",
+    bank_customer_label: "Customer No.",
+    bank_customer_value: "1107469",
+    bank_address_label: "Bank Address",
+    bank_address_value: "Oud Metha, Dubai",
+    modal_bank_confirm: "Send Transfer Receipt on WhatsApp",
 
     faq_title: "FAQ",
-    faq_1_q: "Is the certificate internationally recognized?",
-    faq_1_a: "Yes, it's certified by ASCA (USA) and the UAE Swimming Federation (UAE Aquatics).",
-    faq_2_q: "Can I attend online from outside the UAE?",
-    faq_2_a: "Yes, the B-Live option is available exclusively for participants outside the UAE, with the same certificate.",
-    faq_3_q: "How do I confirm my seat?",
-    faq_3_a: "By paying a 1,000 AED deposit, with installment options available via Tabby or Tamara.",
+    faq_1_q: "Is the course fully online?",
+    faq_1_a: "Yes, the new ASCA Global course is fully online and open to participants from all countries.",
+    faq_2_q: "What's the difference between registering from inside the UAE vs. from a GCC country?",
+    faq_2_a: "Registrants inside the UAE receive the ASCA certificate plus the UAE Swimming Federation certificate. GCC registrants receive the ASCA certificate plus a free ASCA card upon completing the first three levels.",
+    faq_3_q: "When does registration close?",
+    faq_3_a: "Registration is open until 13 November 2026. You can pay in full, by bank transfer, or in installments via Tabby or Tamara.",
 
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   }
@@ -684,6 +792,10 @@ function setLang(lang){
   });
 }
 
+// Always render from the dictionary on load, so the page never shows
+// stale hardcoded text that's out of sync with `translations`.
+setLang(currentLang);
+
 // GA4 click tracking for key conversion links (payments, WhatsApp, registration forms)
 document.querySelectorAll('a[target="_blank"]').forEach(link => {
   link.addEventListener('click', function(){
@@ -696,36 +808,34 @@ document.querySelectorAll('a[target="_blank"]').forEach(link => {
   });
 });
 
-const regForm = document.getElementById('ascaRegForm');
-const regStatus = document.getElementById('regStatus');
-const regMsgs = {
-  ar: { sending: 'جارِ الإرسال...', success: 'تم إرسال بياناتك بنجاح ✓ سنتواصل معك قريبًا', error: 'حدث خطأ، برجاء المحاولة مرة أخرى أو التواصل معنا عبر واتساب' },
-  en: { sending: 'Sending...', success: 'Submitted successfully ✓ We will contact you soon', error: 'Something went wrong, please try again or contact us on WhatsApp' }
-};
-regForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const btn = regForm.querySelector('button[type=submit]');
-  btn.disabled = true;
-  regStatus.textContent = regMsgs[currentLang].sending;
-  regStatus.className = 'text-center text-sm text-navy/60';
-  fetch('https://formsubmit.co/ajax/info@professionalsports.ae', {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: new FormData(regForm)
-  })
-  .then(r => { if(!r.ok) throw new Error('bad response'); return r.json(); })
-  .then(() => {
-    regStatus.textContent = regMsgs[currentLang].success;
-    if(typeof gtag === 'function'){ gtag('event', 'generate_lead', { form: 'registration' }); }
-    regStatus.className = 'text-center text-sm text-green-600 font-semibold';
-    regForm.reset();
-    btn.disabled = false;
-  })
-  .catch(() => {
-    regStatus.textContent = regMsgs[currentLang].error;
-    regStatus.className = 'text-center text-sm text-red-600 font-semibold';
-    btn.disabled = false;
+// Region selection modal (UAE / outside UAE)
+function openRegionModal(){
+  document.getElementById('regionModal').classList.add('open');
+  if(typeof gtag === 'function'){ gtag('event', 'open_region_modal'); }
+}
+function closeRegionModal(){
+  document.getElementById('regionModal').classList.remove('open');
+}
+
+// Bank transfer details modal
+function openBankModal(){
+  document.getElementById('bankModal').classList.add('open');
+  if(typeof gtag === 'function'){ gtag('event', 'open_bank_modal'); }
+}
+function closeBankModal(){
+  document.getElementById('bankModal').classList.remove('open');
+}
+
+// Close modals on background click or Escape key
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) overlay.classList.remove('open');
   });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+  }
 });
 
 </script>
