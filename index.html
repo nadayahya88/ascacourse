@@ -369,20 +369,28 @@
       <span class="text-ocean font-bold text-sm" data-i18n="price_eyebrow">الأسعار</span>
       <h2 class="display text-2xl md:text-3xl font-black text-navy mt-2" data-i18n="price_title">اختر باقتك</h2>
     </div>
-    <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-6">
+    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-6">
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md">
         <h3 class="font-bold text-navy" data-i18n="price_1_title">المستويان 1 و2</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">2,000</span>
+          <span class="display text-3xl font-black text-navy">2,500</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
         <button onclick="openRegionModal()" class="block w-full text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_1_cta">سجّل الآن</button>
+      </div>
+      <div class="bg-white rounded-2xl p-7 card-lift shadow-md">
+        <h3 class="font-bold text-navy" data-i18n="price_2_title">المستوى 3 لوحده</h3>
+        <div class="flex items-end gap-1 my-4">
+          <span class="display text-3xl font-black text-navy">1,700</span>
+          <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
+        </div>
+        <button onclick="openRegionModal()" class="block w-full text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_2_cta">سجّل الآن</button>
       </div>
       <div class="bg-white rounded-2xl p-7 card-lift accent-gold shadow-md relative ring-2 ring-gold">
         <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 bg-gold text-navy text-xs font-black px-3 py-1 rounded-full" data-i18n="price_3_flag">الأشمل</span>
         <h3 class="font-bold text-navy" data-i18n="price_3_title">الباقة الكاملة (المستويات 1 إلى 3)</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">3,200</span>
+          <span class="display text-3xl font-black text-navy">3,500</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
         <button onclick="openRegionModal()" class="ripple-btn block w-full text-center bg-gold hover:bg-gold-light text-navy font-black py-2.5 rounded-full shadow-lg shadow-gold/30 transition text-sm" data-i18n="price_3_cta">سجّل الآن</button>
@@ -606,6 +614,8 @@ const translations = {
     price_1_title: "المستويان 1 و2",
     price_currency: "د.إ",
     price_1_cta: "سجّل الآن",
+    price_2_title: "المستوى 3 لوحده",
+    price_2_cta: "سجّل الآن",
     price_3_flag: "الأشمل",
     price_3_title: "الباقة الكاملة (المستويات 1 إلى 3)",
     price_3_cta: "سجّل الآن",
@@ -710,6 +720,8 @@ const translations = {
     price_1_title: "Levels 1 &amp; 2",
     price_currency: "AED",
     price_1_cta: "Register Now",
+    price_2_title: "Level 3 Only",
+    price_2_cta: "Register Now",
     price_3_flag: "Best Value",
     price_3_title: "Full Package (Levels 1 to 3)",
     price_3_cta: "Register Now",
