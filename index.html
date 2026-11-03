@@ -206,6 +206,8 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
 @media (min-width:640px){.mode-btn{min-height:190px;gap:1.1rem;font-size:1.5rem;border-radius:24px;}.mode-ico{width:80px;height:80px;border-radius:22px;}.mode-ico svg{width:42px;height:42px;}}
 .faq-group{display:none;}
 .faq-group.active{display:block;}
+.live-cards{display:flex !important;justify-content:center;}
+.live-cards > *{width:16rem;max-width:100%;}
 </style>
 </head>
 <body class="antialiased">
@@ -369,7 +371,7 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md">
         <h3 class="font-bold text-navy" data-i18n="price_1_title">المستويان 1 و2</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">2,500</span>
+          <span class="display text-3xl font-black text-navy">2,700</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
         <button onclick="openRegionModal()" class="block w-full text-center border-2 border-navy text-navy font-bold py-2.5 rounded-full hover:bg-navy hover:text-white transition text-sm" data-i18n="price_1_cta">سجّل الآن</button>
@@ -386,7 +388,7 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
         <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 bg-gold text-navy text-xs font-black px-3 py-1 rounded-full" data-i18n="price_3_flag">الأشمل</span>
         <h3 class="font-bold text-navy" data-i18n="price_3_title">الباقة الكاملة (المستويات 1 إلى 3)</h3>
         <div class="flex items-end gap-1 my-4">
-          <span class="display text-3xl font-black text-navy">3,500</span>
+          <span class="display text-3xl font-black text-navy">4,200</span>
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
         <button onclick="openRegionModal()" class="ripple-btn block w-full text-center bg-gold hover:bg-gold-light text-navy font-black py-2.5 rounded-full shadow-lg shadow-gold/30 transition text-sm" data-i18n="price_3_cta">سجّل الآن</button>
@@ -465,11 +467,11 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
       </div>
     </div>
     <div id="body-referee" class="hidden">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+    <div data-cards="1" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
       <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📅</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d1_t">التاريخ</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d1_d">24 – 26 نوفمبر 2026 (3 أيام)</p></div>
-      <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📍</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d2_t">المكان</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d2_d" data-k-inperson="ref_d2_d" data-k-live="live_where">مقر اللجنة الأولمبية الوطنية — الإمارات</p></div>
+      <div data-hide-live="1" class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📍</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d2_t">المكان</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d2_d" data-k-inperson="ref_d2_d" data-k-live="live_where">مقر اللجنة الأولمبية الوطنية — الإمارات</p></div>
       <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">⏰</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d3_t">التوقيت</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d3_d">الساعة 4 مساءً</p></div>
-      <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">🏛️</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d4_t">الحضور</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d4_d" data-k-inperson="ref_d4_d" data-k-live="live_att">حضوري فقط</p></div>
+      <div data-hide-live="1" class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">🏛️</div><h3 class="font-bold text-navy text-sm" data-i18n="ref_d4_t">الحضور</h3><p class="text-navy/60 text-sm mt-1" data-i18n="ref_d4_d" data-k-inperson="ref_d4_d" data-k-live="live_att">حضوري فقط</p></div>
     </div>
 
     <div class="bg-white rounded-2xl p-6 card-lift accent-lane shadow-md mb-6 flex gap-4 items-start">
@@ -496,6 +498,8 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
           <span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span>
         </div>
         <button type="button" onclick="openRegGate('referee')" class="ripple-btn block bg-gold hover:bg-gold-light text-navy font-black py-3 rounded-full shadow-lg shadow-gold/30 transition text-sm" data-i18n="ref_cta">سجّل في كورس التحكيم</button>
+        <a href="https://ipg.comtrust.ae/e/nvoice/i?n=c874e10996564d05a70cb001183146a1" target="_blank" rel="noopener" class="block mt-3 border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold py-2.5 rounded-full transition text-sm" data-i18n="ref_deposit">💳 ادفع دفعة مقدمة</a>
+        <p class="text-navy/50 text-xs mt-2" data-i18n="ref_deposit_note">بعد الدفع أرسل تأكيد الدفع على واتساب.</p>
       </div>
     </div>
     <div id="refLecturers" class="hidden mt-10">
@@ -527,10 +531,10 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
       </div>
     </div>
     <div id="body-dubai" class="hidden">
-    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+    <div data-cards="1" class="grid sm:grid-cols-3 gap-4 mb-8">
       <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📅</div><h3 class="font-bold text-navy text-sm" data-i18n="dub_d1_t">التاريخ</h3><p class="text-navy/60 text-sm mt-1" data-i18n="dub_d1_d">7 – 10 ديسمبر 2026</p></div>
-      <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📍</div><h3 class="font-bold text-navy text-sm" data-i18n="dub_d2_t">المكان</h3><p class="text-navy/60 text-sm mt-1" data-i18n="dub_d2_d" data-k-inperson="dub_d2_d" data-k-live="live_where">اللجنة الأولمبية الوطنية — دبي</p></div>
-      <div class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">🏛️</div><h3 class="font-bold text-navy text-sm" data-i18n="dub_d3_t">الحضور</h3><p class="text-navy/60 text-sm mt-1" data-i18n="dub_d3_d" data-k-inperson="dub_d3_d" data-k-live="live_att">حضوري</p></div>
+      <div data-hide-live="1" class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">📍</div><h3 class="font-bold text-navy text-sm" data-i18n="dub_d2_t">المكان</h3><p class="text-navy/60 text-sm mt-1" data-i18n="dub_d2_d" data-k-inperson="dub_d2_d" data-k-live="live_where">اللجنة الأولمبية الوطنية — دبي</p></div>
+      <div data-hide-live="1" class="bg-white rounded-2xl p-5 card-lift shadow-md"><div class="text-2xl mb-2">🏛️</div><h3 class="font-bold text-navy text-sm" data-i18n="dub_d3_t">الحضور</h3><p class="text-navy/60 text-sm mt-1" data-i18n="dub_d3_d" data-k-inperson="dub_d3_d" data-k-live="live_att">حضوري</p></div>
     </div>
     <h3 class="display text-lg font-black text-navy text-center mb-4" data-i18n="dub_sched_t">جدول المستويات</h3>
     <div class="flex flex-col sm:flex-row gap-4 mb-10">
@@ -553,12 +557,12 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
     <div class="grid md:grid-cols-3 gap-6 mb-4">
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md ">
         <h3 class="font-bold text-navy" data-i18n="price_1_title">المستويان 1 و2</h3>
-        <div class="flex items-end gap-1 my-4"><span class="display text-3xl font-black text-navy">2,835</span><span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span></div>
+        <div class="flex items-end gap-1 my-4"><span class="display text-3xl font-black text-navy">2,700</span><span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span></div>
         <button type="button" onclick="openRegGate('dubai')" class="block w-full text-center font-bold py-2.5 rounded-full transition text-sm border-2 border-navy text-navy hover:bg-navy hover:text-white" data-i18n="price_1_cta">سجّل الآن</button>
       </div>
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md ">
         <h3 class="font-bold text-navy" data-i18n="price_2_title">المستوى الثالث فقط</h3>
-        <div class="flex items-end gap-1 my-4"><span class="display text-3xl font-black text-navy">1,575</span><span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span></div>
+        <div class="flex items-end gap-1 my-4"><span class="display text-3xl font-black text-navy">1,700</span><span class="text-navy/50 mb-1" data-i18n="price_currency">د.إ</span></div>
         <button type="button" onclick="openRegGate('dubai')" class="block w-full text-center font-bold py-2.5 rounded-full transition text-sm border-2 border-navy text-navy hover:bg-navy hover:text-white" data-i18n="price_1_cta">سجّل الآن</button>
       </div>
       <div class="bg-white rounded-2xl p-7 card-lift shadow-md accent-gold relative ring-2 ring-gold">
@@ -567,7 +571,6 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
         <button type="button" onclick="openRegGate('dubai')" class="block w-full text-center font-bold py-2.5 rounded-full transition text-sm ripple-btn bg-gold hover:bg-gold-light text-navy font-black shadow-lg shadow-gold/30" data-i18n="price_1_cta">سجّل الآن</button>
       </div>
     </div>
-    <p class="text-center text-navy/50 text-xs mb-6" data-i18n="dub_vat">الأسعار شاملة ضريبة القيمة المضافة 5%.</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a data-only-inperson="1" href="https://maps.app.goo.gl/AEhpjBUfpo9Cn5bs5" target="_blank" rel="noopener" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm px-6 py-3 rounded-full shadow-sm transition" data-i18n="dub_map">📍 موقع الكورس على الخريطة</a>
       <button type="button" onclick="openRegGate('dubai')" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-black px-6 py-3 rounded-full shadow-lg shadow-gold/30 text-sm" data-i18n="dub_cta">سجّل في الكورس الحضوري</button>
@@ -972,9 +975,10 @@ const translations = {
     po_title: "ادفع أونلاين بالبطاقة",
     po_note: "الدفع عبر صفحة دفع آمنة. بعد الدفع أرسل لنا تأكيد الدفع على واتساب.",
     po_deposit: "💳 ادفع العربون (الدفعة المقدمة)",
-    po_online12: "المستويان 1 و2 — 2,500 د.إ",
+    po_online12: "المستويان 1 و2 — 2,700 د.إ",
     po_online3: "المستوى الثالث فقط — 1,700 د.إ",
-    po_onlineFull: "الباقة الكاملة (1–3) — 3,500 د.إ",
+    po_shipping: "🚚 رسوم شحن الشهادة — 100 د.إ",
+    po_onlineFull: "الباقة الكاملة (1–3) — 4,200 د.إ",
     po_referee: "كورس التحكيم — 1,200 د.إ",
     portal_eyebrow: "منطقة المشاركين",
     portal_title: "الحصة المباشرة والاختبارات",
@@ -1067,7 +1071,9 @@ const translations = {
     faq_9_q: "متى وأين يُقام الكورس الحضوري؟",
     faq_9_a: "من 7 إلى 10 ديسمبر 2026 في مقر اللجنة الأولمبية الوطنية بدبي: المستوى الأول 7 ديسمبر، المستوى الثاني 8 و9 ديسمبر، والمستوى الثالث 10 ديسمبر.",
     faq_10_q: "ما أسعار الكورس الحضوري؟",
-    faq_10_a: "المستويان 1 و2: 2,835 د.إ، المستوى الثالث فقط: 1,575 د.إ، والباقة الكاملة (المستويات 1 إلى 3): 4,200 د.إ. الأسعار شاملة ضريبة القيمة المضافة 5%.",
+    faq_10_a: "المستويان 1 و2: 2,700 د.إ، المستوى الثالث فقط: 1,700 د.إ، والباقة الكاملة (المستويات 1 إلى 3): 4,200 د.إ.",
+    ref_deposit: "💳 ادفع دفعة مقدمة",
+    ref_deposit_note: "بعد الدفع أرسل تأكيد الدفع على واتساب.",
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   },
   en: {
@@ -1222,9 +1228,10 @@ const translations = {
     po_title: "Pay online by card",
     po_note: "Secure payment page. After paying, send us the confirmation on WhatsApp.",
     po_deposit: "💳 Pay the deposit",
-    po_online12: "Levels 1 &amp; 2 — 2,500 AED",
+    po_online12: "Levels 1 &amp; 2 — 2,700 AED",
     po_online3: "Level Three only — 1,700 AED",
-    po_onlineFull: "Full Package (1–3) — 3,500 AED",
+    po_shipping: "🚚 Certificate shipping — 100 AED",
+    po_onlineFull: "Full Package (1–3) — 4,200 AED",
     po_referee: "Referee Course — 1,200 AED",
     portal_eyebrow: "Student Area",
     portal_title: "Live Classroom &amp; Exams",
@@ -1317,7 +1324,9 @@ const translations = {
     faq_9_q: "When and where is the in-person course held?",
     faq_9_a: "From 7 to 10 December 2026 at the UAE National Olympic Committee in Dubai: Level 1 on 7 December, Level 2 on 8 and 9 December, and Level 3 on 10 December.",
     faq_10_q: "What are the in-person course prices?",
-    faq_10_a: "Levels 1 &amp; 2: 2,835 AED, Level 3 only: 1,575 AED, and the Full Package (Levels 1 to 3): 4,200 AED. Prices include 5% VAT.",
+    faq_10_a: "Levels 1 &amp; 2: 2,700 AED, Level 3 only: 1,700 AED, and the Full Package (Levels 1 to 3): 4,200 AED.",
+    ref_deposit: "💳 Pay a deposit",
+    ref_deposit_note: "After paying, send us the confirmation on WhatsApp.",
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   }
 };
@@ -1348,7 +1357,7 @@ function setLang(lang){
 // =====================================================================
 const SITE_CONFIG = {
   // Payment links from your payment gateway (one per button). Empty = button hidden.
-  paymentLinks: { deposit:'', online12:'', onlineLevel3:'', onlineFull:'', referee:'' },
+  paymentLinks: { deposit:'', online12:'https://ipg.comtrust.ae/e/nvoice/i?n=86b40f1b1f1849649f59209fff0a3b7d', onlineLevel3:'https://ipg.comtrust.ae/e/nvoice/i?n=e0731304cf3c4745bca5fae00131976d', onlineFull:'https://ipg.comtrust.ae/e/nvoice/i?n=887a1b91cd7c40e2997d459b4c773190', referee:'', shipping:'https://ipg.comtrust.ae/e/nvoice/i?n=e1b314e9e37e4590b8223bf3ae98a286' },
   // Live classroom: player embed URL (Vimeo / Cloudflare Stream / etc.) and start time (ISO, e.g. '2026-11-24T16:00:00+04:00')
   liveEmbedUrl: '',
   liveStartsAt: '',
@@ -1377,8 +1386,8 @@ const L = x => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[currentLan
 
 // ---------- Pay online ----------
 (function(){
-  const items = [['deposit','po_deposit'],['online12','po_online12'],['online3','po_online3'],['onlineFull','po_onlineFull'],['referee','po_referee']];
-  const map = {deposit:'deposit', online12:'online12', online3:'onlineLevel3', onlineFull:'onlineFull', referee:'referee'};
+  const items = [['deposit','po_deposit'],['online12','po_online12'],['online3','po_online3'],['onlineFull','po_onlineFull'],['referee','po_referee'],['shipping','po_shipping']];
+  const map = {deposit:'deposit', online12:'online12', online3:'onlineLevel3', onlineFull:'onlineFull', referee:'referee', shipping:'shipping'};
   const box = document.getElementById('payOnlineBtns'); let n = 0;
   items.forEach(function(it){
     const url = SITE_CONFIG.paymentLinks[map[it[0]]];
@@ -1386,11 +1395,21 @@ const L = x => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[currentLan
     const a = document.createElement('a');
     a.href = url; a.target = '_blank'; a.rel = 'noopener';
     a.setAttribute('data-i18n', it[1]);
+    a.setAttribute('data-for', it[0]==='referee' ? 'referee' : ((it[0]==='deposit'||it[0]==='shipping') ? 'all' : 'asca'));
     a.className = (it[0]==='deposit' ? 'sm:col-span-2 bg-gold hover:bg-gold-light text-navy font-black' : 'bg-white hover:bg-sky border border-navy/10 text-navy font-bold') + ' text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition';
     box.appendChild(a);
   });
-  if(n) document.getElementById('payOnline').classList.remove('hidden');
+  window.payButtonsCount = n;
 })();
+function updatePayButtons(id){
+  const grp = (id==='referee') ? 'referee' : 'asca';
+  let vis = 0;
+  document.querySelectorAll('#payOnlineBtns a').forEach(function(a){
+    const f = a.getAttribute('data-for'); const show = (f==='all' || f===grp);
+    a.style.display = show ? '' : 'none'; if(show) vis++;
+  });
+  document.getElementById('payOnline').classList.toggle('hidden', vis===0);
+}
 
 // ---------- Referee lecturers (revealed week by week) ----------
 (function(){
@@ -1555,6 +1574,7 @@ function selectCourse(id){
     document.getElementById('course-'+c).classList.toggle('active', c===id);
   });
   document.querySelectorAll('.faq-group').forEach(function(g){ g.classList.toggle('active', g.getAttribute('data-faq')===id); });
+  updatePayButtons(id);
   document.getElementById('courses').style.display = 'none';
   document.body.classList.add('has-course');
   window.scrollTo({top:0, behavior:'smooth'});
@@ -1577,6 +1597,12 @@ function selectMode(c, m){
   document.getElementById('body-'+c).classList.remove('hidden');
   document.querySelectorAll('#course-'+c+' [data-k-inperson]').forEach(function(el){
     el.setAttribute('data-i18n', el.getAttribute('data-k-'+m));
+  });
+  document.querySelectorAll('#course-'+c+' [data-hide-live]').forEach(function(el){
+    el.style.display = (m==='inperson') ? '' : 'none';
+  });
+  document.querySelectorAll('#course-'+c+' [data-cards]').forEach(function(el){
+    el.classList.toggle('live-cards', m==='live');
   });
   document.querySelectorAll('#course-'+c+' [data-only-inperson]').forEach(function(el){
     el.style.display = (m==='inperson') ? '' : 'none';
