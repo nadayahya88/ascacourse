@@ -574,6 +574,7 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
     <div class="flex flex-wrap justify-center gap-3">
       <a data-only-inperson="1" href="https://maps.app.goo.gl/AEhpjBUfpo9Cn5bs5" target="_blank" rel="noopener" class="bg-white hover:bg-sky border border-navy/10 text-navy font-bold text-sm px-6 py-3 rounded-full shadow-sm transition" data-i18n="dub_map">📍 موقع الكورس على الخريطة</a>
       <button type="button" onclick="openRegGate('dubai')" class="ripple-btn bg-gold hover:bg-gold-light text-navy font-black px-6 py-3 rounded-full shadow-lg shadow-gold/30 text-sm" data-i18n="dub_cta">سجّل في الكورس الحضوري</button>
+      <a href="https://ipg.comtrust.ae/e/nvoice/i?n=c874e10996564d05a70cb001183146a1" target="_blank" rel="noopener" class="bg-navy hover:bg-navy/90 text-white font-black px-6 py-3 rounded-full shadow-lg text-sm" data-i18n="dub_deposit">💳 ادفع 300 درهم واحجز مكانك في الكورس</a>
       <a href="https://wa.me/971588243192" target="_blank" rel="noopener" class="bg-[#25D366] hover:brightness-110 text-white font-bold px-6 py-3 rounded-full text-sm" data-i18n="dub_wa">للاستفسار عبر واتساب</a>
     </div>
     </div>
@@ -1073,6 +1074,8 @@ const translations = {
     faq_10_q: "ما أسعار الكورس الحضوري؟",
     faq_10_a: "المستويان 1 و2: 2,700 د.إ، المستوى الثالث فقط: 1,700 د.إ، والباقة الكاملة (المستويات 1 إلى 3): 4,200 د.إ.",
     ref_deposit: "💳 ادفع دفعة مقدمة",
+    dub_deposit: "💳 ادفع 300 درهم واحجز مكانك في الكورس",
+    po_dubDeposit: "💳 ادفع 300 درهم واحجز مكانك في الكورس",
     ref_deposit_note: "بعد الدفع أرسل تأكيد الدفع على واتساب.",
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   },
@@ -1326,6 +1329,8 @@ const translations = {
     faq_10_q: "What are the in-person course prices?",
     faq_10_a: "Levels 1 &amp; 2: 2,700 AED, Level 3 only: 1,700 AED, and the Full Package (Levels 1 to 3): 4,200 AED.",
     ref_deposit: "💳 Pay a deposit",
+    dub_deposit: "💳 Pay 300 AED to reserve your seat",
+    po_dubDeposit: "💳 Pay 300 AED to reserve your seat",
     ref_deposit_note: "After paying, send us the confirmation on WhatsApp.",
     footer_copy: "© 2026 ASCA × Professional Sports &amp; Lifeguard Services"
   }
@@ -1357,7 +1362,7 @@ function setLang(lang){
 // =====================================================================
 const SITE_CONFIG = {
   // Payment links from your payment gateway (one per button). Empty = button hidden.
-  paymentLinks: { deposit:'', online12:'https://ipg.comtrust.ae/e/nvoice/i?n=86b40f1b1f1849649f59209fff0a3b7d', onlineLevel3:'https://ipg.comtrust.ae/e/nvoice/i?n=e0731304cf3c4745bca5fae00131976d', onlineFull:'https://ipg.comtrust.ae/e/nvoice/i?n=887a1b91cd7c40e2997d459b4c773190', referee:'', shipping:'https://ipg.comtrust.ae/e/nvoice/i?n=e1b314e9e37e4590b8223bf3ae98a286' },
+  paymentLinks: { deposit:'', dubDeposit:'https://ipg.comtrust.ae/e/nvoice/i?n=c874e10996564d05a70cb001183146a1', refDeposit:'https://ipg.comtrust.ae/e/nvoice/i?n=c874e10996564d05a70cb001183146a1', online12:'https://ipg.comtrust.ae/e/nvoice/i?n=86b40f1b1f1849649f59209fff0a3b7d', onlineLevel3:'https://ipg.comtrust.ae/e/nvoice/i?n=e0731304cf3c4745bca5fae00131976d', onlineFull:'https://ipg.comtrust.ae/e/nvoice/i?n=887a1b91cd7c40e2997d459b4c773190', referee:'', shipping:'https://ipg.comtrust.ae/e/nvoice/i?n=e1b314e9e37e4590b8223bf3ae98a286' },
   // Live classroom: player embed URL (Vimeo / Cloudflare Stream / etc.) and start time (ISO, e.g. '2026-11-24T16:00:00+04:00')
   liveEmbedUrl: '',
   liveStartsAt: '',
@@ -1386,8 +1391,8 @@ const L = x => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[currentLan
 
 // ---------- Pay online ----------
 (function(){
-  const items = [['deposit','po_deposit'],['online12','po_online12'],['online3','po_online3'],['onlineFull','po_onlineFull'],['referee','po_referee'],['shipping','po_shipping']];
-  const map = {deposit:'deposit', online12:'online12', online3:'onlineLevel3', onlineFull:'onlineFull', referee:'referee', shipping:'shipping'};
+  const items = [['deposit','po_deposit'],['online12','po_online12'],['online3','po_online3'],['onlineFull','po_onlineFull'],['dubDeposit','po_dubDeposit'],['refDeposit','ref_deposit'],['referee','po_referee'],['shipping','po_shipping']];
+  const map = {deposit:'deposit', online12:'online12', online3:'onlineLevel3', onlineFull:'onlineFull', referee:'referee', refDeposit:'refDeposit', dubDeposit:'dubDeposit', shipping:'shipping'};
   const box = document.getElementById('payOnlineBtns'); let n = 0;
   items.forEach(function(it){
     const url = SITE_CONFIG.paymentLinks[map[it[0]]];
@@ -1395,17 +1400,17 @@ const L = x => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[currentLan
     const a = document.createElement('a');
     a.href = url; a.target = '_blank'; a.rel = 'noopener';
     a.setAttribute('data-i18n', it[1]);
-    a.setAttribute('data-for', it[0]==='referee' ? 'referee' : ((it[0]==='deposit'||it[0]==='shipping') ? 'all' : 'asca'));
+    a.setAttribute('data-for', (it[0]==='referee'||it[0]==='refDeposit') ? 'referee' : (it[0]==='dubDeposit' ? 'dubai' : ((it[0]==='deposit'||it[0]==='shipping') ? 'all' : 'asca')));
     a.className = (it[0]==='deposit' ? 'sm:col-span-2 bg-gold hover:bg-gold-light text-navy font-black' : 'bg-white hover:bg-sky border border-navy/10 text-navy font-bold') + ' text-sm text-center px-4 py-3.5 rounded-xl shadow-sm transition';
     box.appendChild(a);
   });
   window.payButtonsCount = n;
 })();
 function updatePayButtons(id){
-  const grp = (id==='referee') ? 'referee' : 'asca';
+  const grp = (id==='referee') ? 'referee' : (id==='dubai' ? 'dubai' : 'asca');
   let vis = 0;
   document.querySelectorAll('#payOnlineBtns a').forEach(function(a){
-    const f = a.getAttribute('data-for'); const show = (f==='all' || f===grp);
+    const f = a.getAttribute('data-for'); const show = (f==='all' || f===grp || (f==='asca' && grp==='dubai'));
     a.style.display = show ? '' : 'none'; if(show) vis++;
   });
   document.getElementById('payOnline').classList.toggle('hidden', vis===0);
