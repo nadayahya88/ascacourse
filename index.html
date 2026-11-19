@@ -198,6 +198,10 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
   .tile2-go svg{width:18px;height:18px;}
 }
 .mode-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:130px;padding:1.2rem .75rem;background:#fff;border:3px solid rgba(10,34,64,.12);border-radius:20px;font-family:'Cairo','Tajawal',sans-serif;font-weight:900;font-size:1.1rem;color:var(--navy);box-shadow:0 8px 24px rgba(10,34,64,.08);transition:transform .2s, border-color .2s, background .2s;cursor:pointer;}
+.mode-tag{font-size:.72rem;font-weight:800;line-height:1;padding:.4rem .8rem;border-radius:999px;background:rgba(10,34,64,.08);color:var(--navy,#0A2240);}
+.mode-tag-live{background:rgba(255,76,48,.12);color:#C2371D;}
+@media (min-width:640px){.mode-tag{font-size:.9rem;padding:.45rem 1rem;}}
+.mode-btn{justify-content:flex-start;}
 .mode-btn:hover{transform:translateY(-4px);border-color:var(--ocean);}
 .mode-btn.active{border-color:var(--gold);background:#FFF8E1;box-shadow:0 0 0 4px rgba(255,194,36,.35),0 8px 24px rgba(10,34,64,.1);}
 .mode-ico{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:16px;background:var(--navy);color:#fff;}
@@ -258,8 +262,8 @@ html[dir="rtl"] .tile2-go svg{transform:scaleX(-1);}
     <div id="mode-dubai" class="mb-10">
       <p class="font-black text-navy text-center text-lg md:text-xl mb-5" data-i18n="mode_title">كيف تريد حضور الكورس؟</p>
       <div class="grid grid-cols-2 gap-3 sm:gap-5 max-w-2xl mx-auto">
-        <button type="button" id="modebtn-dubai-inperson" onclick="selectMode('dubai','inperson')" class="mode-btn"><span class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6M9 12h.01M15 12h.01"/></svg></span><span data-i18n="modebtn_inperson">حضوري</span></button>
-        <button type="button" id="modebtn-dubai-live" onclick="selectMode('dubai','live')" class="mode-btn"><span class="mode-ico mode-ico-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a6 6 0 000 8.4M16.2 7.8a6 6 0 010 8.4M4.9 4.9a10 10 0 000 14.2M19.1 4.9a10 10 0 010 14.2"/></svg></span><span data-i18n="modebtn_live">لايف (بث مباشر)</span></button>
+        <button type="button" id="modebtn-dubai-inperson" onclick="selectMode('dubai','inperson')" class="mode-btn"><span class="mode-tag" data-i18n="mode_tag_in">من الإمارات</span><span class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6M9 12h.01M15 12h.01"/></svg></span><span data-i18n="modebtn_inperson">حضوري</span></button>
+        <button type="button" id="modebtn-dubai-live" onclick="selectMode('dubai','live')" class="mode-btn"><span class="mode-tag mode-tag-live" data-i18n="mode_tag_live">لمقيمي الخليج</span><span class="mode-ico mode-ico-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a6 6 0 000 8.4M16.2 7.8a6 6 0 010 8.4M4.9 4.9a10 10 0 000 14.2M19.1 4.9a10 10 0 010 14.2"/></svg></span><span data-i18n="modebtn_live">لايف (بث مباشر)</span></button>
       </div>
     </div>
     <div id="body-dubai" class="hidden">
@@ -694,6 +698,8 @@ const translations = {
     dub_d3_d: "حضوري",
     dub_contact: "للتسجيل ومعرفة الأسعار والتفاصيل، تواصل معنا على واتساب.",
     dub_cta: "سجّل في الكورس الحضوري",
+    mode_tag_in: "من الإمارات",
+    mode_tag_live: "لمقيمي الخليج",
     dub_cta_live: "سجّل في الكورس لايف",
     dub_wa: "للاستفسار عبر واتساب",
     dub_vat: "الأسعار شاملة ضريبة القيمة المضافة 5%.",
@@ -915,6 +921,8 @@ const translations = {
     dub_d3_d: "In person",
     dub_contact: "To register and get prices and details, contact us on WhatsApp.",
     dub_cta: "Register for the In-Person Course",
+    mode_tag_in: "From the UAE",
+    mode_tag_live: "For GCC Residents",
     dub_cta_live: "Register for the Live Course",
     dub_wa: "Questions? WhatsApp us",
     dub_vat: "Prices include 5% VAT.",
